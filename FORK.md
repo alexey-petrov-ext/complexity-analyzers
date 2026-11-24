@@ -17,7 +17,7 @@ upstream, except the fork-only files listed below.
 
 | Branch | Change | Upstream issue / PR |
 |---|---|---|
-| `upstream/anonymous-type-identity` | A lambda that reads a member of an anonymous type no longer stops `ComplexityAnalyzer` with `AD0001` ("Value must not be empty. (Parameter 'metadataName')"). `KnownOperationResolver` gives no mapping for a member of an anonymous type or an anonymous delegate type, so the estimate stays `Unknown`. Based on `main` at `8058882`. | Issue [#148](https://github.com/rodri-oliveira-dev/complexity-analyzers/issues/148) |
+| `upstream/anonymous-type-identity` | A lambda that reads a member of an anonymous type no longer stops `ComplexityAnalyzer` with `AD0001` ("Value must not be empty. (Parameter 'metadataName')"). `KnownOperationResolver` gives no mapping for a member of an anonymous type or an anonymous delegate type, so the estimate stays `Unknown`. Based on `main` at `8058882`. In `v1.6.1-quindos.1`. | PR [#149](https://github.com/rodri-oliveira-dev/complexity-analyzers/pull/149), for issue [#148](https://github.com/rodri-oliveira-dev/complexity-analyzers/issues/148) |
 
 When a pull request merges, remove its branch from this table and from the update steps below.
 
