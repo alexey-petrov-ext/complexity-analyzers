@@ -18,6 +18,7 @@ upstream, except the fork-only files listed below.
 | Branch | Change | Upstream issue / PR |
 |---|---|---|
 | `upstream/anonymous-type-identity` | A lambda that reads a member of an anonymous type no longer stops `ComplexityAnalyzer` with `AD0001` ("Value must not be empty. (Parameter 'metadataName')"). `KnownOperationResolver` gives no mapping for a member of an anonymous type or an anonymous delegate type, so the estimate stays `Unknown`. Based on `main` at `8058882`. In `v1.6.1-quindos.1`. | PR [#149](https://github.com/rodri-oliveira-dev/complexity-analyzers/pull/149), for issue [#148](https://github.com/rodri-oliveira-dev/complexity-analyzers/issues/148) |
+| `upstream/recursion-path-explosion` | A method with many sequential `if` statements no longer makes `ComplexityAnalyzer` run without end. `RecursiveCallAnalyzer` skips its path analysis when the body holds no direct recursive call, and it returns `Unsupported` above 128 execution paths. Based on `main` at `8058882`. | Not yet opened |
 
 When a pull request merges, remove its branch from this table and from the update steps below.
 
@@ -33,7 +34,7 @@ git remote set-url --push upstream DISABLED-no-push                             
 git fetch upstream
 old_main=$(git rev-parse main)
 git checkout main && git merge --ff-only upstream/main
-for b in upstream/anonymous-type-identity; do
+for b in upstream/anonymous-type-identity upstream/recursion-path-explosion; do
   git rebase main "$b"
 done
 git rebase --onto main "$old_main" quindos   # replays topic commits + fork-only commits
